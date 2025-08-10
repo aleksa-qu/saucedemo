@@ -85,12 +85,10 @@ test('successful checkout with valid user info', async ({ page }) => {
 
   const infoPage = new YourInformationPage(page);
   const user = generateFakeUser();
-  await infoPage.firstNameField.fill(user.firstName);
-  await infoPage.lastNameField.fill(user.lastName);
-  await infoPage.zipPostalCodeField.fill(user.zipCode);
-  await infoPage.continueButton.click();
 
-  const overviewPage = new OverviewPage(page);
+  await infoPage.fillUserInformation(user);
+  const overviewPage = await infoPage.continueToOverview();
+
   await overviewPage.finishButton.click();
 
   const completePage = new CompletePage(page);
