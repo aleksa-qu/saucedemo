@@ -21,7 +21,7 @@ jobs:
         env:
           SERVICE_URL: ${{ secrets.URL }}
           MYUSERNAME: ${{ secrets.MYUSERNAME }}
-          PASSWORD: ${{ secrets.TEST_PASSWORD }}
+          PASSWORD: ${{ secrets.PASSWORD }}
         run: npx playwright test
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
